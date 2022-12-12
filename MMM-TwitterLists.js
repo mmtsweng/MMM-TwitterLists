@@ -9,17 +9,12 @@ Module.register("MMM-TwitterLists", {
         message: "default message if none supplied in config.js"
     },
 
-    init: function(){
-        Log.log(this.name + " is in init!");
+    getTemplate: function() {
+        return "MMM-TwitterLists.njk";
     },
 
-    start: function(){
-        Log.log(this.name + " is starting!");
-    },
-
-    loaded: function(callback) {
-        Log.log(this.name + " is loaded!");
-        callback();
+    getTemplateData: function () {
+        return {config: this.config};
     },
 
     // return list of other functional scripts to use, if any (like require in node_helper)
@@ -49,7 +44,7 @@ Module.register("MMM-TwitterLists", {
         Log.log(this.name + " received a socket notification: " + notification + " - Payload: " + payload);
         if(notification === "message_from_helper"){
             this.config.message = payload;
-            this.updateDom(1000)
+            this.updateDom(100);
         }
 
     },
@@ -59,22 +54,5 @@ Module.register("MMM-TwitterLists", {
 
     resume: function(){
     },
-
-    getDom: function() {
-        var wrapper = document.createElement("div");
-
-        // if user supplied message text in its module config, use it
-        if(this.config.hasOwnProperty("message")){
-            wrapper.innerHTML = this.config.message;
-        }
-        else{
-            wrapper.innerHTML = "Hello world!";
-        }
-
-        // pass the created content back to MM to add to DOM.
-        return wrapper;
-    },
-
-
 
 })

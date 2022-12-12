@@ -3,56 +3,52 @@
 Magic Mirror Module - Twitter Lists
 */
 
+const FETCH_MESSAGE = "FETCH_TWITTER_LIST";
+
+
 Module.register("MMM-TwitterLists", {
 
     defaults: {
-        message: "default message if none supplied in config.js"
+        debug: false,
+        twitterBearerToken: '',
+        twitterUrl: "https://api.twitter.com/2/lists/{ListID}/tweets",
+        twitterListId: '1227596802024771586', //Raspberry Pi Press List
+        updateInterval: 5 * 60 * 1000, //5 Minutes
+
     },
+    twitterData: {},
 
     getTemplate: function() {
         return "MMM-TwitterLists.njk";
     },
 
     getTemplateData: function () {
-        return {config: this.config};
+        return {config: this.config,
+            twitterData: this.twitterData};
     },
 
-    // return list of other functional scripts to use, if any (like require in node_helper)
-    getScripts: function() {
-    return	[
-            // sample of list of files to specify here, if no files,do not use this routine, or return empty list
-        ]
-    }, 
-
-    // return list of stylesheet files to use if any
     getStyles: function() {
         return 	[
+            "MMM-TwitterLists.css"
         ]
     },
 
     notificationReceived: function(notification, payload, sender) {
         if(notification==="ALL_MODULES_STARTED"){
-            this.sendSocketNotification("CONFIG",this.config)
+            this.sendSocketNotification("CONFIG", this.config)
         }
         if (sender) {
-            Log.log(this.name + " received a module notification: " + notification + " from sender: " + sender.name);
+            if (this.config.debug){Log.log(this.name + " received a module notification: " + notification + " from sender: " + sender.name);}
         } else {
-            Log.log(this.name + " received a system notification: " + notification);
+            if (this.config.debug){Log.log(this.name + " received a system notification: " + notification);}
         }
     },
+
     socketNotificationReceived: function(notification, payload) {
-        Log.log(this.name + " received a socket notification: " + notification + " - Payload: " + payload);
-        if(notification === "message_from_helper"){
-            this.config.message = payload;
+        if(notification === FETCH_MESSAGE){
+            if (this.config.debug){Log.log(this.name + " received a Fetch Message: " + payload);}
+            this.twitterData = JSON.parse(payload);
             this.updateDom(100);
         }
-
     },
-
-    suspend: function(){
-    },
-
-    resume: function(){
-    },
-
 })

@@ -1,0 +1,12 @@
+
+.MMM-TwitterLists {
+    display: block;
+    border: 1px solid red;
+    border-radius: 5px;
+    width: 100%
+}
+
+.MMM-TwitterLists .alarm {
+    color: yellow;
+    font-weight: bold;
+}

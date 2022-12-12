@@ -5,9 +5,6 @@ Magic Mirror Module - Twitter Lists
 
 Module.register("MMM-TwitterLists", {
 
-    // holder for config info from module_name.js
-    config:null,
-
     defaults: {
         message: "default message if none supplied in config.js"
     },

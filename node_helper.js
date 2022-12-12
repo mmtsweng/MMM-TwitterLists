@@ -7,11 +7,11 @@ const request = require("request");
 module.exports = NodeHelper.create({
 
 	init: function() {
-		console.log("init module helper SampleModule");
+		console.log("init module helper TwitterLists");
 	},
 
 	start: function() {
-		console.log('Starting module helper:' +this.name);
+		console.log('Starting module helper: ' +this.name);
 	},
 
 	stop: function(){

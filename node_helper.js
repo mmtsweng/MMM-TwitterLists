@@ -1,8 +1,7 @@
 const NodeHelper = require("node_helper");
-const request = require("request");
+const https = require("https");
+const {url} = require("url");
 const Log = require ("logger");
-const { get } = require("request");
-const fetch = require('node-fetch');
 
 const FETCH_MESSAGE = "FETCH_TWITTER_LIST";
 
@@ -29,49 +28,47 @@ module.exports = NodeHelper.create({
 	},
 
 	// Fetch returns a promise, so we need to asynchronously wait for the response
-	getPromise: function() {
-		var url = this.config.twitterUrl.replace('{id}', this.config.twitterListId);
-		if (this.config.debug) {Log.log(this.name + " performing  fetch request to " + url);}
-		
-		return fetch(url, {
-			method: "GET",
-			headers: {
-				'Content-Type': 'application/json',
-				"user-agent": "v2ListTweetsLookupJS",
-				"authorization": "Bearer " + this.config.twitterBearerToken
-				}
-			})
-		.then(resp => 	{
-				return resp.json();
-			})
-		.then(data => {
-			this.jsonBlob = data;
-			return this.jsonBlob;
+	getData: function() {
+		try {
+			var url = new URL(this.config.twitterUrl.replace('{id}', this.config.twitterListId));
+			if (this.config.debug) {Log.log(this.name + " performing  fetch request to " + url);}
+			
+			var options = {
+				headers: {
+					"User-Agent": "v2ListTweetsLookupJS",
+					authorization: `Bearer `+ this.config.twitterBearerToken
+				}, 
+				method: 'GET',
+				hostname: url.hostname,
+				path: url.pathname + url.search,
+				protocol: url.protocol,
+			};
+
+			var request = https.get(options, (response) => {
+				let data = '';
+				response.on('data', (chunk) => {
+					data = data + chunk.toString();
+				});
+
+				response.on('end', () => {
+					this.jsonBlob = JSON.parse(data);
+					this.sendSocketNotification(FETCH_MESSAGE, this.jsonBlob);
+				})
 			});
 
+			request.on('error', (error) => {
+				Log.log (this.name + " ERROR: " + error);
+			})
 
-		/*
-		.then(function(resp) {
-			return resp;
-		})
-		.then(function (value) {
-			Log.log(value);
-			this.jsonBlob = value.json();
-			return value.json();
-		})
-		.catch(function(error) {
-			Log.log("Error Fetching Request: " + error);
-			return null;
-		}); */
+		} catch (error) {
+			Log.log ("*ERROR* : " + this.name + " retrieving tweets: " + error);
+		}
+		
 	},
 
 	//Method to retrieve tweets
 	performFetch: function(){ 
-
-		this.getPromise();
-		Log.log(this.jsonBlob);
- 
-		this.sendSocketNotification(FETCH_MESSAGE, this.jsonBlob);
+		this.getData();
 		this.scheduleNextFetch();
 	},
 

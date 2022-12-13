@@ -2,5 +2,5 @@
     {% if not config.twitterBearerToken %}
         <div class="alarm">Bearer Token must be set in config. Please check documentation for examples.</div>
     {% endif %}
-    <span class="light bright small"> Twitter Data: {{ twitterData.message }}</span>
+    <span class="light bright small"> Twitter Data: {{ twitterData.data[0].text }}</span>
 </div>

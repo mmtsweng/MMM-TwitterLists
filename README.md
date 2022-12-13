@@ -5,6 +5,7 @@ A Magic Mirror Module to display tweets from twitter lists. [Twitter lists](http
 ```
 git clone https://github.com/mmtsweng/MMM-TwitterLists
 cd MMM-TwitterLists
+npm install node-fetch
 npm install --production
 ```
 
@@ -17,3 +18,5 @@ MMM-TwitterLists only requires the "Bearer Token" as it does not require access 
 
 **_NOTE:_** To retrieve the listID, log on to twitter.com, and click on "Lists" in the navigation menu. Create or select a list, and the ID shows up in the URL: `https://twitter.com/i/lists/{ListID}
 
+## Dependencies
+* node-fetch

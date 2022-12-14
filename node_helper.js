@@ -114,6 +114,7 @@ module.exports = NodeHelper.create({
 		}, this.config.updateInterval);
 	},
 
+	//Method to return the amount of time elapsed since the tweet was published
 	timeElapsed : function (timestamp){
 		let currentDate=new Date();
 		let currentTimeInms = currentDate.getTime();

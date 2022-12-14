@@ -74,7 +74,7 @@ module.exports = NodeHelper.create({
 		var jsonTweets = this.jsonBlob.tweets;
 		json.data.forEach(twt => {
 			var author = json.includes.users.find(x => x.id === twt.author_id);
-			var media = {};
+			var media = {type: "", url: ""};
 			if (twt.attachments) {
 				media = json.includes.media.find(x => x.media_key === twt.attachments.media_keys[0]);
 			}
@@ -103,7 +103,7 @@ module.exports = NodeHelper.create({
 	//Method to retrieve tweets
 	performFetch: function(){ 
 		this.getData();
-		// this.scheduleNextFetch();
+		this.scheduleNextFetch();
 	},
 
 	//Method to set the timer for the next data refresh

@@ -1,8 +1,6 @@
 
 .MMM-TwitterLists {
     display: block;
-    border: 1px solid red;
-    border-radius: 5px;
     width: 100%
 }
 
@@ -12,5 +10,54 @@
 }
 
 .MMM-TwitterLists .tweet {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    text-align: left;
+}
+
+.MMM-TwitterLists .author {
+    color: #666;
+    font-size: small;
+}
+
+.MMM-TwitterLists .authorusername {
+    color: #666;
+    font-size: small;
+    display:inline;
+}
+
+.MMM-TwitterLists .authorname {
+    color: #ccc;
+    font-size: small;
+    display: inline;
+}
+.MMM-TwitterLists .authorpic {
+    height: 35px;
+    width: 35px;
+    float: left;
+    vertical-align: top;
+    padding-right: 10px;
+} 
+.MMM-TwitterLists .elapsed {
+    color: #ccc;
+    font-size: x-small;
+    margin-left: 10px;
+}
+
+.MMM-TwitterLists .article{
+    clear: left;
+}
+.MMM-TwitterLists .articletext{
+    font-size: small;
+    color: #eee;
+}
+.MMM-TwitterLists .articlemedia{
+    float:right;
+    vertical-align: text-top;
+}
+
+.MMM-TwitterLists .articlepic{
+    height: 60px;
+    float:right;
+    vertical-align: text-top;
 }

@@ -3,9 +3,19 @@
         <div class="alarm">Bearer Token must be set in config. Please check documentation for examples.</div>
     {% endif %}
 
-    {% for tweet in twitterData.data %}
+    {% for tweet in twitterData.tweets %}
     <div class="tweet">
-        <span class="light bright x-small"> Twitter Data: {{ tweet.text }}</span>
+        <div class="articlemedia"><img class="articlepic" src="{{tweet.media.url}}"/></div>
+        <div class="author">
+            <img class="authorpic" src="{{tweet.author.url}}"/>
+            <div class="authoralignment">
+                <div class="authorname">{{tweet.author.name}}:</div><div class="authorusername">@{{tweet.author.username}}</div>
+                <div class="elapsed">{{tweet.timeElapsed}}</div>
+            </div>
+        </div>
+        <div class="article">
+            <div class="articletext">{{ tweet.text }}</div>
+        </div>
     </div>
     {% endfor %}
 </div>

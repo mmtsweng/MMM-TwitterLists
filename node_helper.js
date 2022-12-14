@@ -76,7 +76,9 @@ module.exports = NodeHelper.create({
 			var author = json.includes.users.find(x => x.id === twt.author_id);
 			var media = {type: "", url: ""};
 			if (twt.attachments) {
-				media = json.includes.media.find(x => x.media_key === twt.attachments.media_keys[0]);
+				if (twt.attachments.media_keys) {
+					media = json.includes.media.find(x => x.media_key === twt.attachments.media_keys[0]);
+				}
 			}
 			var tweet = {
 				text : twt.text,

@@ -40,6 +40,6 @@ A minimal configuration only requires the user Bearer Token and the twitter list
 | --- | --- | --- |
 | `debug` | `false` | Render extensive debug information to the console to validate functionality |
 | `twitterBearerToken` | '' | User's Bearer Token. Treat your bearer token like a password and do not share it |
-| `twitterUrl` | `https://api.twitter.com/2/lists/{id}/tweets?&tweet.fields=attachments,author_id,created_at,text& expansions=attachments.media_keys,author_id&media.fields=preview_image_url, type,url&user.fields=profile_image_url&max_results=10` | URL to the twitter GET API. ID is replaced by the twitterListID **Note** the last parameter is max_results, and can be overridden in your configuration file to determine the approximate length of the module |
+| `twitterUrl` | `https://api.twitter.com/2/lists/{id}/tweets? &tweet.fields=attachments, author_id, created_at, text& expansions=attachments.media_keys, author_id &media.fields=preview_image_url, type,url &user.fields=profile_image_url &max_results=10` | URL to the twitter GET API. ID is replaced by the twitterListID **Note** the last parameter is max_results, and can be overridden in your configuration file to determine the approximate length of the module |
 | 'twitterListId' | `1227596802024771586` | The ID of the twitter list to retrieve and render. Must be public. |
 | 'updateInterval' | 5 minutes | *Note* There is a limit of 900 requests per 15 minutes, and 500,000 tweets per month|

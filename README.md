@@ -33,6 +33,7 @@ A minimal configuration only requires the user Bearer Token and the twitter list
         twitterBearerToken: "{Bearer Token}"
     }
 }
+```
 
 ## Configuration Options
 | **Option** | **Default** | **Description** |

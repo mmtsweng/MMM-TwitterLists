@@ -2,6 +2,8 @@
 
 A Magic Mirror Module to display tweets from twitter lists. [Twitter lists](https://help.twitter.com/en/using-twitter/twitter-lists) allow you to organize tweets based on a group of users, topic or interest. This module will display the most recent tweets from a specified twiiter list.
 
+![TwitterList](https://lh3.googleusercontent.com/u/0/drive-viewer/AFDK6gPEOKc9kHRI6hdA5z0DvUrJZBiVTdI_73oQbRDmAmeilaob67RFnow1q8ch_qdgwDHR2p3WWJAPgNpimeBsm-0lvQhf=w818-h993)
+
 ## Installation
 ```
 git clone https://github.com/mmtsweng/MMM-TwitterLists

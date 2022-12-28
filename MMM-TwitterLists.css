@@ -1,62 +1,61 @@
 
-.MMM-TwitterLists {
+#TweetLists {
     display: block;
     width: 100%
 }
 
-.MMM-TwitterLists .alarm {
+#TweetLists .alarm {
     color: yellow;
     font-weight: bold;
 }
 
-.MMM-TwitterLists .tweet {
+#TweetLists .tweet {
     margin-bottom: 20px;
     position: relative;
     text-align: left;
 }
 
-.MMM-TwitterLists .author {
+#TweetLists .author {
     color: #666;
     font-size: small;
 }
 
-.MMM-TwitterLists .authorusername {
+#TweetLists .authorusername {
     color: #666;
     font-size: small;
     display:inline;
 }
-
-.MMM-TwitterLists .authorname {
+#TweetLists .authorname {
     color: #ccc;
     font-size: small;
     display: inline;
 }
-.MMM-TwitterLists .authorpic {
+#TweetLists .authorpic {
     height: 35px;
     width: 35px;
     float: left;
     vertical-align: top;
     padding-right: 10px;
 } 
-.MMM-TwitterLists .elapsed {
+#TweetLists .elapsed {
     color: #ccc;
     font-size: x-small;
     margin-left: 10px;
 }
 
-.MMM-TwitterLists .article{
+#TweetLists .article{
     clear: left;
 }
-.MMM-TwitterLists .articletext{
+#TweetLists.articletext{
     font-size: small;
     color: #eee;
 }
-.MMM-TwitterLists .articlemedia{
+#TweetLists .articlemedia{
     float:right;
     vertical-align: text-top;
 }
 
-.MMM-TwitterLists .articlepic{
+#TweetLists .articlepic{
     height: 60px;
     float:right;
     vertical-align: text-top;

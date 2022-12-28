@@ -3,11 +3,7 @@ const https = require("https");
 const {url} = require("url");
 const util = require('util');
 const Log = require ("logger");
-
 const FETCH_MESSAGE = "FETCH_TWITTER_LIST";
-
-// add require of other javascripot components here
-// var xxx = require('yyy') here
 
 module.exports = NodeHelper.create({
 	config: {},

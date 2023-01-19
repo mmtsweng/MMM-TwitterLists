@@ -14,7 +14,7 @@ Module.register("MMM-TwitterLists", {
         twitterUrl: "https://api.twitter.com/2/lists/{id}/tweets?&tweet.fields=attachments,author_id,created_at,text&expansions=attachments.media_keys,author_id&media.fields=preview_image_url,type,url&user.fields=profile_image_url&max_results=10",
         twitterListId: '1227596802024771586', //Raspberry Pi Press List
         updateInterval: 5 * 60 * 1000, //5 Minutes
-
+        showPictures: true
     },
     twitterData: {},
 

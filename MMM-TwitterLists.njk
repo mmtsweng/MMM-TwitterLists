@@ -5,7 +5,9 @@
 
     {% for tweet in twitterData.tweets %}
     <div class="tweet">
+        {% if config.showPictures %}
         <div class="articlemedia"><img class="articlepic" src="{{tweet.media.url}}"/></div>
+        {% endif %}
         <div class="author">
             <img class="authorpic" src="{{tweet.author.url}}"/>
             <div class="authoralignment">
